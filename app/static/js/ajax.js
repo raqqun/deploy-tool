@@ -7,6 +7,8 @@ $('.action').on('click', function(e) {
         type: 'POST',
         url: 'http://deploy.thebeautyst.org/config/ajax.php?action=' + action,
         beforeSend: function () {
+            $('#deploy-modal .modal-body').html('');
+            $('#deploy-charging-modal h1').html('');
             if(action == 'deploy-dryrun') {
                 $('#deploy-charging-modal').modal({
                     backdrop: 'static'
@@ -31,8 +33,6 @@ $('.action').on('click', function(e) {
                 $('#deploy-modal').modal({
                     backdrop: 'static'
                 });
-
-		$('#deploy-modal .modal-body').html('');
 
                 for(key in deploy) {
                     for(file in deploy[key].createdfiles) {
@@ -60,6 +60,7 @@ $('#deploy-modal .deploy').on('click', function(e) {
         type: 'POST',
         url: 'http://deploy.thebeautyst.org/config/ajax.php?action=' + action,
         beforeSend: function() {
+            $('#deploy-modal .modal-body').html('');
             $('#deploy-charging-modal h1').html("Deploying <span class='glyphicon glyphicon-cloud-upload'>");
             $('#deploy-modal h1').html("Rsync Deploy Log");
 
@@ -69,13 +70,13 @@ $('#deploy-modal .deploy').on('click', function(e) {
             });
         },
         success: function(response) {
+            var deploy = JSON.parse(response);
+
             $('#deploy-charging-modal').modal('hide');
             $('#deploy-modal .modal-footer').html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>')
             $('#deploy-modal').modal({
                     backdrop: 'static'
             });
-
-	    $('#deploy-modal .modal-body').html('');
 
             for(key in deploy) {
                 for(file in deploy[key].createdfiles) {
