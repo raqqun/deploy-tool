@@ -60,7 +60,7 @@ $('#deploy-modal .deploy').on('click', function(e) {
         type: 'POST',
         url: 'http://deploy.thebeautyst.org/config/ajax.php?action=' + action,
         beforeSend: function() {
-            $('#deploy-charging-modal h1').html("Deploying<span class='glyphicon glyphicon-cloud-upload'>");
+            $('#deploy-charging-modal h1').html("Deploying <span class='glyphicon glyphicon-cloud-upload'>");
             $('#deploy-modal h1').html("Rsync Deploy Log");
 
             $('#deploy-modal').modal('hide');
@@ -74,7 +74,7 @@ $('#deploy-modal .deploy').on('click', function(e) {
             $('#deploy-modal').modal({
                     backdrop: 'static'
             });
-	    
+
 	    $('#deploy-modal .modal-body').html('');
 
             for(key in deploy) {

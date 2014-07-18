@@ -54,7 +54,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <h1 style="text-align: center;" class="modal-title" id="myModalLabel">Deploying Dry-run<span class="glyphicon glyphicon-cloud-upload"></span></h1>
+                    <h1 style="text-align: center;" class="modal-title" id="myModalLabel">Deploying Dry-run <span class="glyphicon glyphicon-cloud-upload"></span></h1>
                 </div>
             </div>
         </div>

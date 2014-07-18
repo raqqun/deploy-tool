@@ -1,5 +1,6 @@
 {
     "gitLocalRepository": "/var/www/thebeautyst/",
     "rsyncRemotePath": "/var/www/thebeautyst",
-    "rsyncRemoteUser": "root@rasp.thebeautyst.org"
+    "rsyncRemoteUser": "root@rasp.thebeautyst.org",
+    "rsyncPrivatekey": "/home/server/.ssh/id_rsa"
 }
