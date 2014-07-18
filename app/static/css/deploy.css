@@ -1,0 +1,69 @@
+.navbar-brand .glyphicon-cloud {
+    font-size: 25px;
+    text-align: center;
+    display: block;
+}
+
+#preprod,
+#redmine,
+#gitlab,
+#server-perf {
+    text-align: center;
+}
+
+#gitlab img,
+#redmine img {
+    width: 25px;
+    height: 25px;
+    display: block;
+    margin: 0 auto;
+}
+
+#preprod img {
+    width: 150px;
+    height: 25px;
+    display: block;
+    margin: 0 auto;
+}
+
+#actions {
+    width: 30%;
+    margin: 0 auto 30px auto;
+}
+
+#actions button {
+    margin: 40px 0;
+}
+
+
+.glyphicon-cloud-download {
+    padding-right: 10px;
+}
+
+.glyphicon-cloud-upload {
+    padding-right: 10px;
+}
+
+#server-perf {
+
+}
+
+#server-perf span{
+    font-size: 25px;
+    display: block;
+    text-align: center;
+}
+
+
+.gitlog td:nth-child(3) {
+    width: 120px;
+}
+
+#deploy-modal .modal-dialog {
+    width: 900px;
+}
+
+#deploy-modal .modal-body p {
+    word-break: keep-all;
+    line-height: 25px;
+}

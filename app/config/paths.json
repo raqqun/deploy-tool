@@ -1,0 +1,5 @@
+{
+    "gitLocalRepository": "/var/www/thebeautyst/",
+    "rsyncRemotePath": "/var/www/thebeautyst",
+    "rsyncRemoteUser": "root@rasp.thebeautyst.org"
+}

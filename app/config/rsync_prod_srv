@@ -1,0 +1,10 @@
+.git/
+.htaccess
+.gitignore
+var/
+media/
+conseils-beaute/wp-content/uploads/
+conseils-beaute/wp-content/media-cache/
+conseils-beaute/wp-content/clrz_cache/
+conseils-beaute/wp-content/db-cache/
+conseils-beaute/wp-content/clrz_wp_uber_cache/
