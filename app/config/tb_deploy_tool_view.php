@@ -12,7 +12,7 @@ class View {
 
     public function render($template) {
         $this->template = $template;
-        $gitlogs = $this->controller->gitLogs();
+
         ob_start();
         include('static/' . $this->template . '.php');
         $view = ob_get_clean();
