@@ -70,7 +70,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" data-action="deploy" class="deploy btn btn-default btn-success">Deploy</button>
+
                 </div>
             </div>
         </div>

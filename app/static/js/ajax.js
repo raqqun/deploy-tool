@@ -19,6 +19,7 @@ $('.action').on('click', function(e) {
             if(action == 'pull') {
                 var pull = JSON.parse(response);
                 $('.reports').html('');
+                $('#deploy-modal .modal-footer').html('<button type="button" data-action="deploy" class="deploy btn btn-default btn-success">Deploy</button>');
                 $('.reports').append("<div class='alert alert-warning alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"+pull.gitpull+"</div>");
                 $('.gitlog tbody').html('');
 
@@ -73,7 +74,7 @@ $('#deploy-modal .deploy').on('click', function(e) {
             var deploy = JSON.parse(response);
 
             $('#deploy-charging-modal').modal('hide');
-            $('#deploy-modal .modal-footer').html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>')
+            $('#deploy-modal .modal-footer').html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>');
             $('#deploy-modal').modal({
                 backdrop: 'static'
             });
