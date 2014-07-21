@@ -8,7 +8,7 @@ $('.action').on('click', function(e) {
         url: 'http://deploy.thebeautyst.org/config/ajax.php?action=' + action,
         beforeSend: function () {
             $('#deploy-modal .modal-body').html('');
-            $('#deploy-charging-modal h1').html('');
+            $('#deploy-charging-modal h1').html("Deploying Dry-run <span class=\"glyphicon glyphicon-cloud-upload\"></span>");
             if(action == 'deploy-dryrun') {
                 $('#deploy-charging-modal').modal({
                     backdrop: 'static'
@@ -75,7 +75,7 @@ $('#deploy-modal .deploy').on('click', function(e) {
             $('#deploy-charging-modal').modal('hide');
             $('#deploy-modal .modal-footer').html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>')
             $('#deploy-modal').modal({
-                    backdrop: 'static'
+                backdrop: 'static'
             });
 
             for(key in deploy) {
