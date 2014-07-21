@@ -7,8 +7,8 @@ $('.action').on('click', function(e) {
         type: 'POST',
         url: 'http://deploy.thebeautyst.org/config/ajax.php?action=' + action,
         beforeSend: function () {
-            $('.close-modal').toggle();
-            $('.deploy').toggle();
+            $('.close-modal').hide();
+            $('.deploy').show();
             $('#deploy-modal .modal-body').html('');
             $('#deploy-charging-modal h1').html("Deploying Dry-run <span class=\"glyphicon glyphicon-cloud-upload\"></span>");
             if(action == 'deploy-dryrun') {
@@ -62,8 +62,8 @@ $('#deploy-modal .deploy').on('click', function(e) {
         type: 'POST',
         url: 'http://deploy.thebeautyst.org/config/ajax.php?action=' + action,
         beforeSend: function() {
-            $('.close-modal').toggle();
-            self.toggle();
+            $('.close-modal').show();
+            self.hide();
             $('#deploy-modal .modal-body').html('');
             $('#deploy-charging-modal h1').html("Deploying <span class='glyphicon glyphicon-cloud-upload'>");
             $('#deploy-modal h1').html("Rsync Deploy Log");
