@@ -7,6 +7,7 @@ $('.action').on('click', function(e) {
         type: 'POST',
         url: 'http://deploy.thebeautyst.org/config/ajax.php?action=' + action,
         beforeSend: function () {
+            $('.close-modal').toggle();
             $('#deploy-modal .modal-body').html('');
             $('#deploy-charging-modal h1').html("Deploying Dry-run <span class=\"glyphicon glyphicon-cloud-upload\"></span>");
             if(action == 'deploy-dryrun') {
@@ -72,6 +73,7 @@ $('#deploy-modal .deploy').on('click', function(e) {
         success: function(response) {
             var deploy = JSON.parse(response);
 
+            $('.close-modal').toggle();
             $('#deploy-charging-modal').modal('hide');
             $('#deploy-modal').modal({
                 backdrop: 'static'
