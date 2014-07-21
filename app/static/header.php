@@ -70,7 +70,8 @@
 
                 </div>
                 <div class="modal-footer">
-
+                    <button type="button" data-action="deploy" class="deploy btn btn-default btn-success">Deploy</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

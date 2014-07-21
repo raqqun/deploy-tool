@@ -9,7 +9,6 @@ $('.action').on('click', function(e) {
         beforeSend: function () {
             $('#deploy-modal .modal-body').html('');
             $('#deploy-charging-modal h1').html("Deploying Dry-run <span class=\"glyphicon glyphicon-cloud-upload\"></span>");
-            $('#deploy-modal .modal-footer').html('<button type="button" data-action="deploy" class="deploy btn btn-default btn-success">Deploy</button>');
             if(action == 'deploy-dryrun') {
                 $('#deploy-charging-modal').modal({
                     backdrop: 'static'
@@ -74,7 +73,6 @@ $('#deploy-modal .deploy').on('click', function(e) {
             var deploy = JSON.parse(response);
 
             $('#deploy-charging-modal').modal('hide');
-            $('#deploy-modal .modal-footer').html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>');
             $('#deploy-modal').modal({
                 backdrop: 'static'
             });
