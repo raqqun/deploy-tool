@@ -75,7 +75,6 @@ $('#deploy-modal .deploy').on('click', function(e) {
             var deploy = JSON.parse(response);
             $('.close-modal').show();
             self.hide();
-            $('.close-modal').toggle();
             $('#deploy-charging-modal').modal('hide');
             $('#deploy-modal').modal({
                 backdrop: 'static'
