@@ -1,6 +1,11 @@
 .git/
 .htaccess
 .gitignore
+index.php
+wp-config.php
+local.xml
+robots.txt
+thebeautystprod.sql
 var/
 media/
 conseils-beaute/wp-content/uploads/
