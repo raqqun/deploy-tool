@@ -41,7 +41,7 @@ class Controller {
 
         $paths = $this->paths;
 
-        $gitpull = shell_exec("cd {$paths['gitLocalRepository']}; git pull --rebase 2>&1;");
+        exec("cd {$paths['gitLocalRepository']}; git pull --rebase 2>&1;", $gitpull);
         $gitlogs = $this->gitLogs();
 
         file_put_contents('../since_last_log.json', json_encode($gitlogs['commit0']['dater']));

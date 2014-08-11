@@ -82,13 +82,13 @@ $('#deploy-modal .deploy').on('click', function(e) {
 
             for(key in deploy) {
                 for(file in deploy[key].createdfiles) {
-                    $('#deploy-modal .modal-body').append("<p><b>Created Files:</b> "+deploy[key].createdfiles[file].join('<br>')+"</p>");
+                    $('#deploy-modal .modal-body').append("<p><b>Created Files:</b><br>"+deploy[key].createdfiles[file].join('<br>')+"</p>");
                 }
                 for(file in deploy[key].createdirectories) {
-                    $('#deploy-modal .modal-body').append("<p><b>Created Directorys:</b> "+deploy[key].createdirectories[file].join('<br>')+"</p>");
+                    $('#deploy-modal .modal-body').append("<p><b>Created Directorys:</b><br>"+deploy[key].createdirectories[file].join('<br>')+"</p>");
                 }
                 for(file in deploy[key].modifiedfiles) {
-                    $('#deploy-modal .modal-body').append("<p><b>Modified Files:</b> "+deploy[key].modifiedfiles[file].join('<br>')+"</p>");
+                    $('#deploy-modal .modal-body').append("<p><b>Modified Files:</b><br>"+deploy[key].modifiedfiles[file].join('<br>')+"</p>");
                 }
             }
         }
