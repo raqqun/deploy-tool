@@ -56,7 +56,7 @@ class Controller {
             file_put_contents('../since_last_log.json', json_encode($last_commits));
 
         } else {
-            file_put_contents('../since_last_log.json', json_encode($gitlogs['commit0']['hash']));
+            file_put_contents('../since_last_log.json', json_encode(array($gitlogs['commit0']['hash'])));
         }
 
 
