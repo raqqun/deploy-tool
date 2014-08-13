@@ -44,7 +44,7 @@ class Controller {
         exec("cd {$paths['gitLocalRepository']}; git pull --rebase 2>&1;", $gitpull);
         $gitlogs = $this->gitLogs();
 
-        file_put_contents('../since_last_log.json', json_encode($gitlogs['commit0']['dater']));
+        file_put_contents('../since_last_log.json', json_encode($gitlogs['commit0']['hash']), FILE_APPEND);
 
         $response['gitpull'] = $gitpull;
         $response['gitlog'] = $gitlogs;
