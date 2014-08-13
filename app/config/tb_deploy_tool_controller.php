@@ -44,7 +44,14 @@ class Controller {
         exec("cd {$paths['gitLocalRepository']}; git pull --rebase 2>&1;", $gitpull);
         $gitlogs = $this->gitLogs();
 
-        file_put_contents('../since_last_log.json', json_encode($gitlogs['commit0']['hash']), FILE_APPEND);
+        if (file_exists('../since_last_log.json')) {
+            $last_commits[] = json_decode(file_get_contents('../since_last_log.json'));
+            $last_commits[] = $gitlogs['commit0']['hash'];
+            file_put_contents('../since_last_log.json', json_encode($last_commits));
+        } else {
+            file_put_contents('../since_last_log.json', json_encode($gitlogs['commit0']['hash']));
+        }
+
 
         $response['gitpull'] = $gitpull;
         $response['gitlog'] = $gitlogs;
