@@ -26,7 +26,7 @@ $('.action').on('click', function(e) {
 
                 for(log in pull.gitlog) {
                     if (pull.gitlog[log].deployed == true) {
-                        $('.gitlog tbody').append("<tr style=\"background-color: #DFF0D8\"><td colspan=\"4\"><span class=\"glyphicon glyphicon-cloud-upload\"></span> Deployed"+pull.gitlog[log].deploydate+"</td></tr>");
+                        $('.gitlog tbody').append("<tr style=\"background-color: #DFF0D8\"><td colspan=\"4\"><span class=\"glyphicon glyphicon-cloud-upload\"></span> Deployed "+pull.gitlog[log].deploydate+"</td></tr>");
                     }
                     $('.gitlog tbody').append("<tr class='"+pull.gitlog[log].hash+"'><td>"+pull.gitlog[log].author+"</td><td>"+pull.gitlog[log].date+"</td><td>"+pull.gitlog[log].dater+"</td><td>"+pull.gitlog[log].message+"</td></tr>");
                 }
