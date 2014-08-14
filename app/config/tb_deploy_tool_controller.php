@@ -94,9 +94,9 @@ class Controller {
         if (file_exists('/var/www/deploy-tool/app/since_last_log.json') && !$dryRun) {
             $last_commits = json_decode(file_get_contents('/var/www/deploy-tool/app/since_last_log.json'), true);
 
-            if (end($last_commits['lastcommit'][]) != $last_log) {
-                $last_commits['lastcommit'][][] = $last_log;
-                $last_commits['lastcommit'][][] = date('d/m/Y h:i');
+            if (end($last_commits['lastcommit'][][0]) != $last_log) {
+                $last_commits['lastcommit'][][0] = $last_log;
+                $last_commits['lastcommit'][][1] = date('d/m/Y h:i');
             }
 
             file_put_contents('/var/www/deploy-tool/app/since_last_log.json', json_encode($last_commits));
