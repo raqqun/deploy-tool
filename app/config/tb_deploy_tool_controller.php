@@ -88,7 +88,7 @@ class Controller {
 
         file_put_contents($this->absPathToConfig.'/rsync_log.json', $jsonify_log);
 
-        $last_log = exec("git log --date=short --pretty=format:\"%H\" -1");
+        $last_log = exec("cd {$paths['gitLocalRepository']}; git log --date=short --pretty=format:\"%H\" -1");
 
         if (file_exists('/var/www/deploy-tool/app/since_last_log.json') && $dryRun) {
             $last_commits = json_decode(file_get_contents('/var/www/deploy-tool/app/since_last_log.json'), true);
