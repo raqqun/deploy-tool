@@ -2,7 +2,7 @@
 
 
 echo $view->render('header');
-
+error_log('ok');
 echo $view->render('gitreports');
 
 echo $view->render('gitlog');
