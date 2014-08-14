@@ -11,6 +11,14 @@
                     <tbody>
                     <?php foreach ($gitlogs as $gitlog): ?>
 
+                        <?php if ($gitlog['deployed'] == true): ?>
+
+                            <tr style="background-color: #DFF0D8">
+                                <td><span class="glyphicon glyphicon-cloud-upload"></span> Deployed</td>
+                            </tr>
+
+                        <?php endif; ?>
+
                         <tr class="<?php echo $gitlog['hash']; ?>">
                             <td><?php echo $gitlog['author']; ?></td>
                             <td><?php echo $gitlog['date']; ?></td>
