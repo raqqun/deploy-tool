@@ -29,10 +29,10 @@ class Controller {
             $response['commit'.$i]['dater'] = $matches[4][0];
             $response['commit'.$i]['message'] = $matches[5][0];
 
-            if (file_exists('../since_last_log.json')) {
-                $last_commits = json_decode(file_get_contents('../since_last_log.json'), true);
+            if (file_exists('since_last_log.json')) {
+                $last_commits = json_decode(file_get_contents('since_last_log.json'), true);
 
-                foreach ($last_commits as $commit) {
+                foreach ($last_commits['lastcommit'] as $commit) {
                     if ($commit == $response['commit'.$i]['hash']) {
                         $response['commit'.$i]['deployed'] = true;
                     }
