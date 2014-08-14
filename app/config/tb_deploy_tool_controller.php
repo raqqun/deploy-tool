@@ -90,7 +90,7 @@ class Controller {
 
         $last_log = exec("cd {$paths['gitLocalRepository']}; git log --date=short --pretty=format:\"%H\" -1");
 
-        if (file_exists('/var/www/deploy-tool/app/since_last_log.json') && $dryRun) {
+        if (file_exists('/var/www/deploy-tool/app/since_last_log.json') && !$dryRun) {
             $last_commits = json_decode(file_get_contents('/var/www/deploy-tool/app/since_last_log.json'), true);
 
             if (end($last_commits['lastcommit']) != $last_log) {
