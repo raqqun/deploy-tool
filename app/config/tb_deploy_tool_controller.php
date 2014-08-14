@@ -94,7 +94,8 @@ class Controller {
         if (file_exists('/var/www/deploy-tool/app/since_last_log.json') && !$dryRun) {
             $last_commits = json_decode(file_get_contents('/var/www/deploy-tool/app/since_last_log.json'), true);
 
-            if (end($last_commits['lastcommit'][][0]) != $last_log) {
+            $lastCommitHash = end($last_commits['lastcommit']);
+            if ($lastCommitHash[0] != $last_log) {
                 $last_commits['lastcommit'][] = array($last_log, date('d/m/Y h:i'));
             }
 
