@@ -57,10 +57,8 @@ class Controller {
         if (file_exists('../since_last_log.json')) {
             $last_commits = json_decode(file_get_contents('../since_last_log.json'), true);
 
-            foreach ($last_commits['lastcommit'] as $commit) {
-                if ($commit != $gitlogs['commit0']['hash']) {
-                    $last_commits['lastcommit'][] = $gitlogs['commit0']['hash'];
-                }
+            if (end($last_commits['lastcommit']) != $gitlogs['commit0']['hash']) {
+                $last_commits['lastcommit'][] = $gitlogs['commit0']['hash'];
             }
 
             file_put_contents('../since_last_log.json', json_encode($last_commits));
