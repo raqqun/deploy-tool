@@ -19,8 +19,8 @@ $('.action').on('click', function(e) {
         },
         success: function (response) {
             if(action == 'pull') {
+                console.log(response);
                 var pull = JSON.parse(response);
-                console.log(pull);
                 $('.reports').html('');
                 $('.reports').append("<div class='alert alert-warning alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"+pull.gitpull.join('<br>')+"</div>");
                 $('.gitlog tbody').html('');
