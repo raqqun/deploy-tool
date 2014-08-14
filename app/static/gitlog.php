@@ -14,7 +14,7 @@
                         <?php if (isset($gitlog['deployed']) && $gitlog['deployed'] == true): ?>
 
                             <tr style="background-color: #DFF0D8">
-                                <td colspan="4"><span class="glyphicon glyphicon-cloud-upload"></span> Deployed</td>
+                                <td colspan="4"><span class="glyphicon glyphicon-cloud-upload"></span> Deployed <?php echo $gitlog['deploydate']; ?></td>
                             </tr>
 
                         <?php endif; ?>
