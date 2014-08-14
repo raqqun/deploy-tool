@@ -29,8 +29,8 @@ class Controller {
             $response['commit'.$i]['dater'] = $matches[4][0];
             $response['commit'.$i]['message'] = $matches[5][0];
 
-            if (file_exists('since_last_log.json')) {
-                $last_commits = json_decode(file_get_contents('since_last_log.json'), true);
+            if (file_exists('/var/www/deploy-tool/app/since_last_log.json')) {
+                $last_commits = json_decode(file_get_contents('/var/www/deploy-tool/app/since_last_log.json'), true);
 
                 foreach ($last_commits['lastcommit'] as $commit) {
                     if ($commit == $response['commit'.$i]['hash']) {
@@ -54,18 +54,18 @@ class Controller {
         exec("cd {$paths['gitLocalRepository']}; git pull --rebase 2>&1;", $gitpull);
         $gitlogs = $this->gitLogs();
 
-        if (file_exists('../since_last_log.json')) {
-            $last_commits = json_decode(file_get_contents('../since_last_log.json'), true);
+        if (file_exists('/var/www/deploy-tool/app/since_last_log.json')) {
+            $last_commits = json_decode(file_get_contents('/var/www/deploy-tool/app/since_last_log.json'), true);
 
             if (end($last_commits['lastcommit']) != $gitlogs['commit0']['hash']) {
                 $last_commits['lastcommit'][] = $gitlogs['commit0']['hash'];
             }
 
-            file_put_contents('../since_last_log.json', json_encode($last_commits));
+            file_put_contents('/var/www/deploy-tool/app/since_last_log.json', json_encode($last_commits));
 
         } else {
             $lastcommit = array("lastcommit"=>array($gitlogs['commit0']['hash']));
-            file_put_contents('../since_last_log.json', json_encode($lastcommit));
+            file_put_contents('/var/www/deploy-tool/app/since_last_log.json', json_encode($lastcommit));
         }
 
 
