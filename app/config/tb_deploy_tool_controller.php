@@ -33,8 +33,9 @@ class Controller {
                 $last_commits = json_decode(file_get_contents('/var/www/deploy-tool/app/since_last_log.json'), true);
 
                 foreach ($last_commits['lastcommit'] as $commit) {
-                    if ($commit == $response['commit'.$i]['hash']) {
+                    if ($commit[0] == $response['commit'.$i]['hash']) {
                         $response['commit'.$i]['deployed'] = true;
+                        $response['commit'.$i]['deploydate'] = $commit[1];
                     }
                 }
             }
@@ -101,7 +102,7 @@ class Controller {
 
         }
         elseif (!file_exists('/var/www/deploy-tool/app/since_last_log.json')) {
-            $lastcommit = array("lastcommit"=>array($last_log));
+            $lastcommit = array("lastcommit"=>array(array($last_log, date('d/m/Y h:i'))));
             file_put_contents('/var/www/deploy-tool/app/since_last_log.json', json_encode($lastcommit));
         }
 
