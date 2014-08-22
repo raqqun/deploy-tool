@@ -30,9 +30,9 @@ class Controller {
             $response['commit'.$i]['message'] = $matches[5][0];
 
             if (file_exists('/var/www/deploy-tool/app/since_last_log.json')) {
-                $last_commits = json_decode(file_get_contents('/var/www/deploy-tool/app/since_last_log.json'), true);
+                $lastCommits = json_decode(file_get_contents('/var/www/deploy-tool/app/since_last_log.json'), true);
 
-                foreach ($last_commits['lastcommit'] as $commit) {
+                foreach ($lastCommits['lastcommit'] as $commit) {
                     if ($commit[0] == $response['commit'.$i]['hash']) {
                         $response['commit'.$i]['deployed'] = true;
                         $response['commit'.$i]['deploydate'] = $commit[1];
@@ -89,21 +89,21 @@ class Controller {
 
         file_put_contents($this->absPathToConfig.'/rsync_log.json', $jsonify_log);
 
-        $last_log = exec("cd {$paths['gitLocalRepository']}; git log --date=short --pretty=format:\"%H\" -1");
+        $lastLog = exec("cd {$paths['gitLocalRepository']}; git log --date=short --pretty=format:\"%H\" -1");
 
         if (file_exists('/var/www/deploy-tool/app/since_last_log.json') && !$dryRun) {
-            $last_commits = json_decode(file_get_contents('/var/www/deploy-tool/app/since_last_log.json'), true);
+            $lastCommits = json_decode(file_get_contents('/var/www/deploy-tool/app/since_last_log.json'), true);
 
-            $lastCommitHash = end($last_commits['lastcommit']);
-            if ($lastCommitHash[0] != $last_log) {
-                $last_commits['lastcommit'][] = array($last_log, date('d/m/Y h:i'));
+            $lastCommitHash = end($lastCommits['lastcommit']);
+            if ($lastCommitHash[0] != $lastLog) {
+                $lastCommits['lastcommit'][] = array($lastLog, date('d/m/Y h:i'));
             }
 
-            file_put_contents('/var/www/deploy-tool/app/since_last_log.json', json_encode($last_commits));
+            file_put_contents('/var/www/deploy-tool/app/since_last_log.json', json_encode($lastCommits));
 
         }
         elseif (!file_exists('/var/www/deploy-tool/app/since_last_log.json') && !$dryRun) {
-            $lastcommit = array("lastcommit"=>array(array($last_log, date('d/m/Y h:i'))));
+            $lastcommit = array("lastcommit"=>array(array($lastLog, date('d/m/Y h:i'))));
             file_put_contents('/var/www/deploy-tool/app/since_last_log.json', json_encode($lastcommit));
         }
 
