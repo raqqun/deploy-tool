@@ -66,7 +66,7 @@ class Controller {
 
         $dryRunOption = ($dryRun) ? 'n' : '';
 
-        exec("rsync -auvz".$dryRunOption." --itemize-changes --exclude-from '".APP_DIR."/rsync_prod_srv' -e 'ssh -i {$gitPaths['rsyncPrivatekey']}' {$paths['gitLocalRepository']} {$paths['rsyncRemoteUser']}:{$paths['rsyncRemotePath']};", $rsynclog);
+        exec("rsync -auvz".$dryRunOption." --itemize-changes --exclude-from '".APP_DIR."/rsync_prod_srv' -e 'ssh -i {$gitPaths['rsyncPrivatekey']}' {$gitPaths['gitLocalRepository']} {$gitPaths['rsyncRemoteUser']}:{$gitPaths['rsyncRemotePath']};", $rsynclog);
 
         $createdFiles = array();
         $currentDate = date('d/m/Y G:s');
