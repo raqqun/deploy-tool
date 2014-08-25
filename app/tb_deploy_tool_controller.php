@@ -110,7 +110,8 @@ class Controller {
 
 
     function synchronizeProdWithPreprod() {
-
+        $date = date('d_m_y');
+        return exec("/home/server/prod_preprod_sync/importprod.sh http://preprod.thebeautyst.org/ http://preprod.thebeautyst.co.uk/ /media/samba/dumps/thebeautyst_latest_dump_{$date}.sql.gz");
     }
 }
 

@@ -37,7 +37,7 @@
                 <li id="preprod"><a href="http://preprod.thebeautyst.org" target="_blank"><img src="<?php echo DEPLOY_URL.'/static/img/logo_thebeautyst.png' ?>">Preproduction Server</a></li>
                 <li id="redmine"><a href="http://redmine.thebeautyst.org" target="_blank"><img src="<?php echo DEPLOY_URL.'/static/img/redmine.png' ?>">Redmine</a></li>
                 <li id="gitlab"><a href="http://gitlab.thebeautyst.org" target="_blank"><img src="<?php echo DEPLOY_URL.'/static/img/gitlab.png' ?>">Gitlab</a>
-                <li id="server-perf"><a href="<?php echo DEPLOY_URL.'/templates/monitoring.php' ?>" target="_blank"><span class="glyphicon glyphicon-dashboard"></span>Server Monitoring</a></li>
+                <li id="server-perf"><a href="<?php echo DEPLOY_URL.'/templates/monitoring.php' ?>"><span class="glyphicon glyphicon-dashboard"></span>Server Monitoring</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">

@@ -14,4 +14,7 @@ switch ($_REQUEST['action']) {
     case 'deploy':
         echo $controller->deployToProduction($dryRun = false);
         break;
+    case 'import':
+        echo $controller->synchronizeProdWithPreprod();
+        break;
 }

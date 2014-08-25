@@ -7,11 +7,11 @@ $('.action').on('click', function(e) {
         type: 'POST',
         url: 'http://deploy.thebeautyst.org/app/ajax.php?action=' + action,
         beforeSend: function () {
-            $('.close-modal').hide();
-            $('.deploy').show();
-            $('#deploy-modal .modal-body').html('');
-            $('#deploy-charging-modal h1').html("Deploying Dry-run <span class=\"glyphicon glyphicon-cloud-upload\"></span>");
             if(action == 'deploy-dryrun') {
+                $('.close-modal').hide();
+                $('.deploy').show();
+                $('#deploy-modal .modal-body').html('');
+                $('#deploy-charging-modal h1').html("Deploying Dry-run <span class=\"glyphicon glyphicon-cloud-upload\"></span>");
                 $('#deploy-charging-modal').modal({
                     backdrop: 'static'
                 });
@@ -50,6 +50,10 @@ $('.action').on('click', function(e) {
                         $('#deploy-modal .modal-body').append("<p><b>Modified Files:</b><br>"+deploy[key].modifiedfiles[file].join('<br>')+"</p>");
                     }
                 }
+            }
+            else if (action == 'import') {
+                $('#deploy-charging-modal h1').html("Import Finished <span class\"glyphicon glyphicon-transfer\"></span>");
+                $('#deploy-charging-modal').modal();
             }
         }
     });
