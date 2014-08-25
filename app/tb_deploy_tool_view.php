@@ -14,7 +14,7 @@ class View {
         $this->template = $template;
 
         ob_start();
-        include(STATIC_DIR . $this->template . '.php');
+        include(TEMPLATES . $this->template . '.php');
         $template = ob_get_clean();
 
         return $template;
