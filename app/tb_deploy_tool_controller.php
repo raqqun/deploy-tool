@@ -109,6 +109,11 @@ class Controller {
 
         return $jsonify_log;
     }
+
+
+    function synchronizeProdWithPreprod() {
+
+    }
 }
 
 $controller = new Controller();
