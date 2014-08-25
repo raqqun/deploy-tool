@@ -1,4 +1,5 @@
 <?php
+require_once '../app_paths.php';
 require_once APP_DIR.'/tb_deploy_tool_controller.php';
 
 // Get data-action and do the job
