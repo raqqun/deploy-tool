@@ -1,6 +1,6 @@
 <?php
 require_once '../app_paths.php';
-require_once APP_DIR.'/tb_deploy_tool_controller.php';
+include APP_DIR.'/tb_deploy_tool_view.php';
 
 echo $view->render('header');
 
