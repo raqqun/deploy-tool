@@ -5,7 +5,7 @@ $('.action').on('click', function(e) {
 
     jQuery.ajax({
         type: 'POST',
-        url: 'http://deploy.thebeautyst.org/config/ajax.php?action=' + action,
+        url: 'http://deploy.thebeautyst.org/app/ajax.php?action=' + action,
         beforeSend: function () {
             $('.close-modal').hide();
             $('.deploy').show();
@@ -63,7 +63,7 @@ $('#deploy-modal .deploy').on('click', function(e) {
     console.log(action);
     jQuery.ajax({
         type: 'POST',
-        url: 'http://deploy.thebeautyst.org/config/ajax.php?action=' + action,
+        url: 'http://deploy.thebeautyst.org/app/ajax.php?action=' + action,
         beforeSend: function() {
             $('#deploy-modal .modal-body').html('');
             $('#deploy-charging-modal h1').html("Deploying <span class='glyphicon glyphicon-cloud-upload'>");
