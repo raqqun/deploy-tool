@@ -7,9 +7,9 @@
 <title>TheBeautyst Deploy Tool</title>
 
 <!-- Bootstrap -->
-<link href="<?php echo DEPLOY_URL.'static/css/bootstrap.min.css' ?>" rel="stylesheet">
+<link href="<?php echo DEPLOY_URL.'/static/css/bootstrap.min.css' ?>" rel="stylesheet">
 <!-- Deploy App css -->
-<link rel="stylesheet" type="text/css" href="<?php echo DEPLOY_URL.'static/css/deploy.css' ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo DEPLOY_URL.'/static/css/deploy.css' ?>">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,8 +35,8 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
                 <li id="preprod"><a href="http://preprod.thebeautyst.org" target="_blank"><img src="<?php echo DEPLOY_URL.'/static/img/logo_thebeautyst.png' ?>">Preproduction Server</a></li>
-                <li id="redmine"><a href="http://redmine.thebeautyst.org" target="_blank"><img src="<?php echo DEPLOY_URL.'static/img/redmine.png' ?>">Redmine</a></li>
-                <li id="gitlab"><a href="http://gitlab.thebeautyst.org" target="_blank"><img src="<?php echo DEPLOY_URL.'static/img/gitlab.png' ?>">Gitlab</a>
+                <li id="redmine"><a href="http://redmine.thebeautyst.org" target="_blank"><img src="<?php echo DEPLOY_URL.'/static/img/redmine.png' ?>">Redmine</a></li>
+                <li id="gitlab"><a href="http://gitlab.thebeautyst.org" target="_blank"><img src="<?php echo DEPLOY_URL.'/static/img/gitlab.png' ?>">Gitlab</a>
                 <li id="server-perf"><a href="<?php echo DEPLOY_URL.'/templates/monitoring.php' ?>" target="_blank"><span class="glyphicon glyphicon-dashboard"></span>Server Monitoring</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
