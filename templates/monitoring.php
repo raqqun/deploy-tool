@@ -4,8 +4,8 @@ include APP_DIR.'/tb_deploy_tool_view.php'; ?>
 
 <?php echo $view->render('/header'); ?>
 
-<div id="actions">
-    <div class="container">
+<div class="container">
+    <div id="actions">
         <button type="button" data-action="import" class="action btn btn-lg btn-primary btn-block"><span class"glyphicon glyphicon-transfer"></span>Import Database</button>
     </div>
 </div>
