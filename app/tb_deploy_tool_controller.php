@@ -6,7 +6,7 @@ class Controller {
     private $gitPaths;
 
     public function __construct() {
-        $this->gitPaths = json_decode(file_get_contents(APP_DIR.'paths.json'), $assoc = true);
+        $this->gitPaths = json_decode(file_get_contents(APP_DIR.'/paths.json'), $assoc = true);
     }
 
     public function gitLogs() {
@@ -28,7 +28,7 @@ class Controller {
             $response['commit'.$i]['message'] = $matches[5][0];
 
             if (file_exists(ABSPATH.'since_last_log.json')) {
-                $lastCommits = json_decode(file_get_contents(ABSPATH.'since_last_log.json'), true);
+                $lastCommits = json_decode(file_get_contents(ABSPATH.'/since_last_log.json'), true);
 
                 foreach ($lastCommits['lastcommit'] as $commit) {
                     if ($commit[0] == $response['commit'.$i]['hash']) {
@@ -66,7 +66,7 @@ class Controller {
 
         $dryRunOption = ($dryRun) ? 'n' : '';
 
-        exec("rsync -auvz".$dryRunOption." --itemize-changes --exclude-from '".APP_DIR."rsync_prod_srv' -e 'ssh -i {$gitPaths['rsyncPrivatekey']}' {$paths['gitLocalRepository']} {$paths['rsyncRemoteUser']}:{$paths['rsyncRemotePath']};", $rsynclog);
+        exec("rsync -auvz".$dryRunOption." --itemize-changes --exclude-from '".APP_DIR."/rsync_prod_srv' -e 'ssh -i {$gitPaths['rsyncPrivatekey']}' {$paths['gitLocalRepository']} {$paths['rsyncRemoteUser']}:{$paths['rsyncRemotePath']};", $rsynclog);
 
         $createdFiles = array();
         $currentDate = date('d/m/Y G:s');
@@ -85,24 +85,24 @@ class Controller {
 
         $jsonify_log = json_encode($createdFiles);
 
-        file_put_contents(ABSPATH.'rsync_log.json', $jsonify_log);
+        file_put_contents(ABSPATH.'/rsync_log.json', $jsonify_log);
 
         $lastLog = exec("cd {$gitPaths['gitLocalRepository']}; git log --date=short --pretty=format:\"%H\" -1");
 
-        if (file_exists(ABSPATH.'since_last_log.json') && !$dryRun) {
-            $lastCommits = json_decode(file_get_contents(ABSPATH.'since_last_log.json'), true);
+        if (file_exists(ABSPATH.'/since_last_log.json') && !$dryRun) {
+            $lastCommits = json_decode(file_get_contents(ABSPATH.'/since_last_log.json'), true);
 
             $lastCommitHash = end($lastCommits['lastcommit']);
             if ($lastCommitHash[0] != $lastLog) {
                 $lastCommits['lastcommit'][] = array($lastLog, date('d/m/Y h:i'));
             }
 
-            file_put_contents(ABSPATH.'since_last_log.json', json_encode($lastCommits));
+            file_put_contents(ABSPATH.'/since_last_log.json', json_encode($lastCommits));
 
         }
-        elseif (!file_exists(ABSPATH.'since_last_log.json') && !$dryRun) {
+        elseif (!file_exists(ABSPATH.'/since_last_log.json') && !$dryRun) {
             $lastcommit = array("lastcommit"=>array(array($lastLog, date('d/m/Y h:i'))));
-            file_put_contents(ABSPATH.'since_last_log.json', json_encode($lastcommit));
+            file_put_contents(ABSPATH.'/since_last_log.json', json_encode($lastcommit));
         }
 
         return $jsonify_log;
