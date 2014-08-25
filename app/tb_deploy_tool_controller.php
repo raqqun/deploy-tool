@@ -27,7 +27,7 @@ class Controller {
             $response['commit'.$i]['dater'] = $matches[4][0];
             $response['commit'.$i]['message'] = $matches[5][0];
 
-            if (file_exists(ABSPATH.'since_last_log.json')) {
+            if (file_exists(ABSPATH.'/since_last_log.json')) {
                 $lastCommits = json_decode(file_get_contents(ABSPATH.'/since_last_log.json'), true);
 
                 foreach ($lastCommits['lastcommit'] as $commit) {
