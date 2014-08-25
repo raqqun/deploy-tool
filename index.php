@@ -1,4 +1,8 @@
-<?php include 'config/tb_deploy_tool_view.php';
+<?php
+# import the paths for global use
+include 'app_paths.php';
+# import view class
+include APP_DIR.'tb_deploy_tool_view.php';
 
 
 echo $view->render('header');

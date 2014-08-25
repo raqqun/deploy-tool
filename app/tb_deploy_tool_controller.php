@@ -3,21 +3,19 @@
 
 class Controller {
 
-    private $paths;
-    private $absPathToConfig;
+    private $gitPaths;
 
     public function __construct() {
-        $this->absPathToConfig = dirname(__FILE__);
-        $this->paths = json_decode(file_get_contents($this->absPathToConfig.'/paths.json'), $assoc = true);
+        $this->gitPaths = json_decode(file_get_contents(APP_DIR.'paths.json'), $assoc = true);
     }
 
     public function gitLogs() {
         $response = array();
         $i=0;
 
-        $paths = $this->paths;
+        $gitPaths = $this->gitPaths;
 
-        exec("cd {$paths['gitLocalRepository']}; git log --date=short --pretty=format:\"<hash>%H<hash> <author>%an<author> <date>%ad<date> <dater>%ar<dater> <message>%s<message>\" -36;", $gitlogs);
+        exec("cd {$gitPaths['gitLocalRepository']}; git log --date=short --pretty=format:\"<hash>%H<hash> <author>%an<author> <date>%ad<date> <dater>%ar<dater> <message>%s<message>\" -36;", $gitlogs);
 
         foreach ($gitlogs as $gitlog) {
 
@@ -30,7 +28,7 @@ class Controller {
             $response['commit'.$i]['message'] = $matches[5][0];
 
             if (file_exists('/var/www/deploy-tool/app/since_last_log.json')) {
-                $lastCommits = json_decode(file_get_contents('/var/www/deploy-tool/app/since_last_log.json'), true);
+                $lastCommits = json_decode(file_get_contents(APP_DIR.'/since_last_log.json'), true);
 
                 foreach ($lastCommits['lastcommit'] as $commit) {
                     if ($commit[0] == $response['commit'.$i]['hash']) {
@@ -50,9 +48,9 @@ class Controller {
     public function gitPull() {
         $response = array();
 
-        $paths = $this->paths;
+        $gitPaths = $this->gitPaths;
 
-        exec("cd {$paths['gitLocalRepository']}; git pull --rebase 2>&1;", $gitpull);
+        exec("cd {$gitPaths['gitLocalRepository']}; git pull --rebase 2>&1;", $gitpull);
         $gitlogs = $this->gitLogs();
 
         $response['gitpull'] = $gitpull;
@@ -64,11 +62,11 @@ class Controller {
 
     public function deployToProduction($dryRun = false) {
 
-        $paths = $this->paths;
+        $gitPaths = $this->gitPaths;
 
         $dryRunOption = ($dryRun) ? 'n' : '';
 
-        exec("rsync -auvz".$dryRunOption." --itemize-changes --exclude-from '".$this->absPathToConfig."/rsync_prod_srv' -e 'ssh -i {$paths['rsyncPrivatekey']}' {$paths['gitLocalRepository']} {$paths['rsyncRemoteUser']}:{$paths['rsyncRemotePath']};", $rsynclog);
+        exec("rsync -auvz".$dryRunOption." --itemize-changes --exclude-from '".APP_DIR."rsync_prod_srv' -e 'ssh -i {$gitPaths['rsyncPrivatekey']}' {$paths['gitLocalRepository']} {$paths['rsyncRemoteUser']}:{$paths['rsyncRemotePath']};", $rsynclog);
 
         $createdFiles = array();
         $currentDate = date('d/m/Y G:s');
@@ -87,24 +85,24 @@ class Controller {
 
         $jsonify_log = json_encode($createdFiles);
 
-        file_put_contents($this->absPathToConfig.'/rsync_log.json', $jsonify_log);
+        file_put_contents(APP_DIR.'rsync_log.json', $jsonify_log);
 
-        $lastLog = exec("cd {$paths['gitLocalRepository']}; git log --date=short --pretty=format:\"%H\" -1");
+        $lastLog = exec("cd {$gitPaths['gitLocalRepository']}; git log --date=short --pretty=format:\"%H\" -1");
 
-        if (file_exists('/var/www/deploy-tool/app/since_last_log.json') && !$dryRun) {
-            $lastCommits = json_decode(file_get_contents('/var/www/deploy-tool/app/since_last_log.json'), true);
+        if (file_exists(APP_DIR.'since_last_log.json') && !$dryRun) {
+            $lastCommits = json_decode(file_get_contents(APP_DIR.'since_last_log.json'), true);
 
             $lastCommitHash = end($lastCommits['lastcommit']);
             if ($lastCommitHash[0] != $lastLog) {
                 $lastCommits['lastcommit'][] = array($lastLog, date('d/m/Y h:i'));
             }
 
-            file_put_contents('/var/www/deploy-tool/app/since_last_log.json', json_encode($lastCommits));
+            file_put_contents(APP_DIR.'since_last_log.json', json_encode($lastCommits));
 
         }
-        elseif (!file_exists('/var/www/deploy-tool/app/since_last_log.json') && !$dryRun) {
+        elseif (!file_exists(APP_DIR.'since_last_log.json') && !$dryRun) {
             $lastcommit = array("lastcommit"=>array(array($lastLog, date('d/m/Y h:i'))));
-            file_put_contents('/var/www/deploy-tool/app/since_last_log.json', json_encode($lastcommit));
+            file_put_contents(APP_DIR.'since_last_log.json', json_encode($lastcommit));
         }
 
         return $jsonify_log;
@@ -115,5 +113,3 @@ class Controller {
 
     }
 }
-
-$controller = new Controller();

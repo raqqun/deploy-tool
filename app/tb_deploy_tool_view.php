@@ -1,10 +1,10 @@
 <?php
-require_once 'tb_deploy_tool_controller.php';
+require_once APP_DIR.'tb_deploy_tool_controller.php';
 
 class View {
 
     protected $template = null;
-    public $controller;
+    public $controller = null;
 
     public function __construct() {
         $this->controller = new Controller();
@@ -14,10 +14,10 @@ class View {
         $this->template = $template;
 
         ob_start();
-        include('static/' . $this->template . '.php');
-        $view = ob_get_clean();
+        include(STATIC_DIR . $this->template . '.php');
+        $template = ob_get_clean();
 
-        return $view;
+        return $template;
     }
 }
 
