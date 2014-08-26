@@ -13,7 +13,7 @@ include APP_DIR.'/tb_deploy_tool_view.php'; ?>
             <h3 class="panel-title">Latest Database Import Log</h3>
         </div>
     <div class="panel-body">
-        <?php $log = $view->controller->importLatestDatabase(); ?>
+        <?php $log = $view->controller->printImportLatestDatabaseLog(); ?>
         <?php if(!empty($log)): ?>
             <?php foreach ($log as $line): ?>
                 <p><?php echo $line; ?></p>
