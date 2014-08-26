@@ -15,6 +15,6 @@ switch ($_REQUEST['action']) {
         echo $controller->deployToProduction($dryRun = false);
         break;
     case 'import':
-        echo $controller->synchronizeProdWithPreprod();
+        echo $controller->importLatestDatabase();
         break;
 }

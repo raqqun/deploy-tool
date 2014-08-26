@@ -109,9 +109,31 @@ class Controller {
     }
 
 
-    function synchronizeProdWithPreprod() {
+    function importLatestDatabase() {
         $date = date('d_m_y');
-        return exec("/home/server/prod_preprod_sync/importprod.sh http://preprod.thebeautyst.org/ http://preprod.thebeautyst.co.uk/ /media/samba/dumps/thebeautyst_latest_dump_{$date}.sql.gz");
+        $log = array();
+        exec("/home/server/prod_preprod_sync/importprod.sh http://preprod.thebeautyst.org/ http://preprod.thebeautyst.co.uk/ /media/samba/dumps/thebeautyst_latest_dump_{$date}.sql.gz 2>&1", $log);
+
+        if(file_exists(ABSPATH.'/import.log')) {
+            unlink(ABSPATH.'/import.log');
+        }
+
+        foreach ($log as $line) {
+            $line .= "\n";
+            file_put_contents(ABSPATH.'/import.log', $line, FILE_APPEND);
+        }
+
+    }
+
+
+    function printImportLatestDatabaseLog() {
+        $log = array();
+
+        if(file_exists(ABSPATH.'/import.log')) {
+            $log = file(ABSPATH.'/import.log');
+        }
+
+        return $log;
     }
 }
 
