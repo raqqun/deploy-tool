@@ -52,7 +52,7 @@ $('.action').on('click', function(e) {
                 }
             }
             else if (action == 'import') {
-                $('#deploy-charging-modal h1').html(response+" <span class\"glyphicon glyphicon-transfer\"></span>");
+                $('#deploy-charging-modal h1').html(response+" <span class=\"glyphicon glyphicon-transfer\"></span>");
                 $('#deploy-charging-modal').modal();
             }
         }
