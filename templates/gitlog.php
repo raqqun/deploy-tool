@@ -19,11 +19,11 @@
 
                         <?php endif; ?>
 
-                        <tr class="<?php echo $gitlog['hash']; ?>">
+                        <tr class="">
                             <td><?php echo $gitlog['author']; ?></td>
                             <td><?php echo $gitlog['date']; ?></td>
                             <td><?php echo $gitlog['dater']; ?></td>
-                            <td><?php echo $gitlog['message']; ?></td>
+                            <td><a href="http://gitlab.thebeautyst.org/thebeautyst/thebeautyst/commit/<?php echo $gitlog['hash']; ?>"><?php echo $gitlog['message']; ?></a></td>
                         </tr>
 
                     <?php endforeach; ?>
