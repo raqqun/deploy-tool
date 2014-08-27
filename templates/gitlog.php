@@ -23,7 +23,7 @@
                             <td><?php echo $gitlog['author']; ?></td>
                             <td><?php echo $gitlog['date']; ?></td>
                             <td><?php echo $gitlog['dater']; ?></td>
-                            <td><a href="http://gitlab.thebeautyst.org/thebeautyst/thebeautyst/commit/<?php echo $gitlog['hash']; ?>"><?php echo $gitlog['message']; ?></a></td>
+                            <td><a href="http://gitlab.thebeautyst.org/thebeautyst/thebeautyst/commit/<?php echo $gitlog['hash']; ?>" target="_blank"><?php echo truncateHash((string) $gitlog['hash']); ?></a> <?php echo $gitlog['message']; ?></td>
                         </tr>
 
                     <?php endforeach; ?>

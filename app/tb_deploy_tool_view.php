@@ -1,5 +1,6 @@
 <?php
 require_once APP_DIR.'/tb_deploy_tool_controller.php';
+require_once APP_DIR.'/functions.php';
 
 class View {
 
