@@ -28,7 +28,7 @@ $('.action').on('click', function(e) {
                     if (pull.gitlog[log].deployed == true) {
                         $('.gitlog tbody').append("<tr style=\"background-color: #DFF0D8\"><td colspan=\"4\"><span class=\"glyphicon glyphicon-cloud-upload\"></span> Deployed "+pull.gitlog[log].deploydate+"</td></tr>");
                     }
-                    $('.gitlog tbody').append("<tr class='"+pull.gitlog[log].hash+"'><td>"+pull.gitlog[log].author+"</td><td>"+pull.gitlog[log].date+"</td><td>"+pull.gitlog[log].dater+"</td><td><a href='http://gitlab.thebeautyst.org/thebeautyst/thebeautyst/commit/"+pull.gitlog[log].hash+"'>"+pull.gitlog[log].hash.substring(0, 9)+" "+pull.gitlog[log].message+"</td></tr>");
+                    $('.gitlog tbody').append("<tr class='"+pull.gitlog[log].hash+"'><td>"+pull.gitlog[log].author+"</td><td>"+pull.gitlog[log].date+"</td><td>"+pull.gitlog[log].dater+"</td><td><a href='http://gitlab.thebeautyst.org/thebeautyst/thebeautyst/commit/"+pull.gitlog[log].hash+"'></a>"+pull.gitlog[log].hash.substring(0, 9)+" "+pull.gitlog[log].message+"</td></tr>");
                 }
             }
             else if(action == 'deploy-dryrun') {
