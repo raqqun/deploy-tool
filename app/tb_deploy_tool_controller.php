@@ -112,7 +112,7 @@ class Controller {
     function importLatestDatabase() {
         $date = date('d_m_y');
         $log = array();
-        exec("/home/server/prod_preprod_sync/importprod.sh http://preprod.thebeautyst.org/ http://preprod.thebeautyst.co.uk/ /media/samba/dumps/thebeautyst_latest_dump_{$date}.sql.gz > ".ABSPATH."/import.log 2>&1", $log);
+        exec("/home/server/prod_preprod_sync/importprod.sh http://preprod.thebeautyst.org/ http://preprod.thebeautyst.co.uk/ /media/samba/dumps/thebeautyst_latest_dump.sql.gz > ".ABSPATH."/import.log 2>&1", $log);
     }
 
 
