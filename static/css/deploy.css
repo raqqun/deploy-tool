@@ -59,6 +59,10 @@
     width: 120px;
 }
 
+.gitlog td:nth-child(2) {
+    width: 100px;
+}
+
 #deploy-modal .modal-dialog {
     width: 900px;
 }
@@ -67,3 +71,4 @@
     word-break: keep-all;
     line-height: 25px;
 }
+
